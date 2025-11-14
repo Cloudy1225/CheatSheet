@@ -1,8 +1,30 @@
 # 速查表
+## Git
+### 远程仓库
+```bash
+git remote add <remote_name> <remote_url> # 添加
+git remote set-url <remote_name> <new_remote_url> # 修改
+git remote -v # 查看当前
+git remote remove <remote_name> # 删除
+```
 
-## 查看/杀死进程
 
-```linux
+### git add自动只加50M以下的文件
+```bash
+find . -type f -size -50M -print0 | xargs -0 git add
+```
+
+### push
+```bash
+git push <remote_name> <branch_name>
+# 假如想设置upstream，保证以后默认推到这里，那么
+git push -u <remote_name> <branch_name>
+```
+
+## Linux
+### 查看/杀死进程
+
+```bash
 ps -ef | grep python
 ```
 
@@ -24,7 +46,7 @@ kill -9 12345
 
 
 
-## 后台不挂断运行
+### 后台不挂断运行
 
 ```bash
 nohup ./run.sh > nohup.out &
@@ -38,7 +60,7 @@ sudo chmod -R 777 dir
 
 
 
-## 延时运行命令
+### 延时运行命令
 
 ```bash
 sleep 2h && your_command
@@ -50,7 +72,7 @@ sleep 60 && your_command
 
 
 
-## 查看文件大小
+### 查看文件大小
 
 **使用 `ls` 命令**
 
@@ -71,7 +93,7 @@ ls -lh /path/to/folder
 
 
 
-## 移动目录/文件
+### 移动目录/文件
 
 **移动文件**
 ```bash
@@ -95,4 +117,12 @@ mv file.txt newfile.txt
 
 ```bash
 mv file.txt /home/user/newfile.txt
+```
+
+### 复制文件
+```bash
+cp <source_file> <target> # target如果是文件夹，就保持原名，不然就写到file级别指明要叫什么名
+
+# 复制文件夹：需要-r递归
+cp -r <source_dir> <target>
 ```
