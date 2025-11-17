@@ -9,19 +9,44 @@ git remote remove <remote_name> # 删除
 ```
 
 
+
 ### git add自动只加50M以下的文件
+
 ```bash
 find . -type f -size -50M -print0 | xargs -0 git add
 ```
 
+
+
 ### push
+
 ```bash
 git push <remote_name> <branch_name>
 # 假如想设置upstream，保证以后默认推到这里，那么
 git push -u <remote_name> <branch_name>
 ```
 
+
+
 ## Linux
+
+### 目录树生成
+
+| 功能                                | Windows             | Linux                         | macOS                         |
+| ----------------------------------- | ------------------- | ----------------------------- | ----------------------------- |
+| **安装方式**                        | 无需安装            | `sudo apt install tree`       | `brew install tree`           |
+| **显示目录树（基础）**              | `tree`              | `tree`                        | `tree`                        |
+| **显示文件**                        | `tree /F`           | 默认显示                      | 默认显示                      |
+| **显示隐藏文件**                    | 不支持              | `tree -a`                     | `tree -a`                     |
+| **使用 ASCII 绘图字符（避免乱码）** | `tree /A`           | `tree --charset=ASCII` 或默认 | `tree --charset=ASCII` 或默认 |
+| **限制目录深度**                    | 不支持              | `tree -L 2`                   | `tree -L 2`                   |
+| **显示完整路径**                    | 不支持              | `tree -f`                     | `tree -f`                     |
+| **显示文件大小**                    | 不支持              | `tree -s`                     | `tree -s`                     |
+| **显示权限/所有者等信息**           | 不支持              | `tree -pug`                   | `tree -pug`                   |
+| **输出到文件**                      | `tree /F > out.txt` | `tree > out.txt`              | `tree > out.txt`              |
+
+
+
 ### 查看/杀死进程
 
 ```bash
@@ -119,7 +144,10 @@ mv file.txt newfile.txt
 mv file.txt /home/user/newfile.txt
 ```
 
+
+
 ### 复制文件
+
 ```bash
 cp <source_file> <target> # target如果是文件夹，就保持原名，不然就写到file级别指明要叫什么名
 
