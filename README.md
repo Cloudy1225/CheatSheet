@@ -8,7 +8,7 @@ git remote -v # 查看当前
 git remote remove <remote_name> # 删除
 ```
 
-
+---
 
 ### git add自动只加50M以下的文件
 
@@ -16,7 +16,7 @@ git remote remove <remote_name> # 删除
 find . -type f -size -50M -print0 | xargs -0 git add
 ```
 
-
+---
 
 ### push
 
@@ -26,7 +26,7 @@ git push <remote_name> <branch_name>
 git push -u <remote_name> <branch_name>
 ```
 
-
+---
 
 ## Linux
 
@@ -45,7 +45,7 @@ git push -u <remote_name> <branch_name>
 | **显示权限/所有者等信息**           | 不支持              | `tree -pug`                   | `tree -pug`                   |
 | **输出到文件**                      | `tree /F > out.txt` | `tree > out.txt`              | `tree > out.txt`              |
 
-
+---
 
 ### 查看/杀死进程
 
@@ -69,7 +69,7 @@ kill -9 12345
 
 `-9` 是 `SIGKILL`，强制杀死进程，无法被捕获。
 
-
+---
 
 ### 后台不挂断运行
 
@@ -83,7 +83,7 @@ nohup ./run.sh > nohup.out &
 sudo chmod -R 777 dir
 ```
 
-
+---
 
 ### 延时运行命令
 
@@ -95,7 +95,7 @@ sleep 5m && your_command
 sleep 60 && your_command
 ```
 
-
+---
 
 ### 查看文件大小
 
@@ -117,6 +117,21 @@ ls -lh /path/to/folder
 会显示该目录下每个文件的大小。
 
 
+
+**使用 `du` 命令**
+
+1. 显示当前目录下各文件夹大小：`du -h --max-depth=1`
+2. 显示某个目录总大小：`du -sh /path/to/dir`
+3. 只显示目录本身总大小：`du -sh .`
+4. 按大小排序显示：`du -h --max-depth=1 | sort -h`
+
+说明：
+
+- -h 以人类可读方式显示（KB/MB/GB）
+- -s 只显示总计
+- --max-depth 控制目录深度
+
+---
 
 ### 移动目录/文件
 
@@ -144,7 +159,7 @@ mv file.txt newfile.txt
 mv file.txt /home/user/newfile.txt
 ```
 
-
+---
 
 ### 复制文件
 
