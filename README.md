@@ -26,6 +26,29 @@ git push <remote_name> <branch_name>
 git push -u <remote_name> <branch_name>
 ```
 
+
+### 设置ssh key
+```
+# 1. 在集群的登录节点上执行
+ssh-keygen -t ed25519 -C "your_email@example.com" # 这个email可以不是真实email，随便设，只是作为标识
+# 出现提示后，连续按enter，默认保存到 ~/.ssh/id_ed25519
+
+# 2. 启动ssh代理并添加密钥
+eval "$(ssh-agent -s)" # 启动ssh-agent
+ssh-add ~/.ssh/id_ed25519 # 添加私钥到ssh-agent
+
+# 3. 查看并复制公钥
+cat ~/.ssh/id_ed25519.pub
+
+# 4. 添加到github: GitHub → Settings → SSH and GPG keys, 点击"New SSH key"
+#    Key type: 保持默认 Authentication Key
+#    Key: 粘贴刚才复制的公钥内容
+
+# 5. 测试连接
+ssh -T git@github.com
+# 如果成功，会显示Hi <username>! You've successfully authenticated...
+```
+
 ---
 
 ## Linux
