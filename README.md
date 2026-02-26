@@ -1,7 +1,7 @@
 # 速查表
 - [Git](#git)
   - [远程仓库](#远程仓库)
-  - [git add 自动只加 50M 以下文件](#git-add-自动只加-50m-以下文件)
+  - [git add 防止被大文件卡死](#git-add-防止被大文件卡死)
   - [push](#push)
   - [设置 ssh key](#设置ssh-key)
 - [Linux](#linux)
@@ -24,11 +24,28 @@ git remote remove <remote_name> # 删除
 
 ---
 
-### git add 自动只加 50M 以下文件
-
+### git add 防止被大文件卡死
+* 自动只加 50M 以下文件
 ```bash
 find . -type f -size -50M -print0 | xargs -0 git add
 ```
+
+* add时使用`--verbose`参数，或缩略版`-v`:
+```bash
+git add -v .
+```
+会看到飞快滚动的被添加的文件。如果卡在哪里，说明可能太大了
+然后可以修改`.gitignore`文件，例如：
+```bash
+*.[oa] # 忽略所有以 .a 或 .o 为扩展名的文件
+!lib.a # 但是 lib.a 文件或者目录不要忽略
+/TODO # 只忽略根目录下的 TODO, 子目录的 TODO 不忽略
+build/ # 无论是在根目录和子目录，只要叫build/ 目录下的文件就会被忽略
+doc/*.txt # 忽略 doc/.txt, 但 doc/server/.txt 不忽略
+doc/**/*.pdf # 忽略 doc文件夹下所有的*.pdf
+```
+摘自https://xueqing.github.io/blog/git/git_ignore/
+
 
 ---
 
