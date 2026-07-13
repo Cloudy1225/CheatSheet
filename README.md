@@ -12,6 +12,7 @@
   - [查看文件大小](#查看文件大小)
   - [移动目录文件](#移动目录文件)
   - [复制文件](#复制文件)
+  - [解压缩文件](#解压缩文件)
 
 ## Git
 ### 远程仓库
@@ -222,4 +223,27 @@ cp <source_file> <target> # target如果是文件夹，就保持原名，不然�
 
 # 复制文件夹：需要-r递归
 cp -r <source_dir> <target>
+```
+
+### 解压缩文件
+
+```bash
+# 解压 .tar
+tar -xf archive.tar
+
+# 解压 .tar.gz / .tgz
+tar -xzf archive.tar.gz
+
+# 解压 .zip
+unzip archive.zip
+
+# 解压到指定目录
+tar -xzf archive.tar.gz -C /path/to/target/
+unzip archive.zip -d /path/to/target/
+
+# 压缩目录为 .tar.gz
+tar -czf archive.tar.gz directory/
+
+# 压缩目录为 .zip
+zip -r archive.zip directory/
 ```
